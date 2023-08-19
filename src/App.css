@@ -177,3 +177,28 @@
   margin-bottom: 10px;
 }
 
+
+
+@media (max-width: 768px) {
+  body {
+    font-size: small;
+  }
+  .App {
+    padding: 10%;
+    width: 100%;
+    scale: 1;
+  }
+  .JobsList {
+    flex: 0.4;
+    overflow-y: scroll;
+    height: 100vh;
+    width: 100vh;
+  }
+  .App .JobDetails {
+    display: none;
+  }
+  .JobCard .tagContainer .tag {
+    font-size: smaller;
+  }
+}
+
