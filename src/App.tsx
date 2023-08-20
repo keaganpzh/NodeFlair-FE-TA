@@ -8,11 +8,12 @@ import Job from './types/job.type';
 
 function App() {
 
-  const [jobSelected, setJobSelected] = useState<Job>(jobs[0]);
+  const jobList = jobs.sort((a, b) => b.updated.getTime() - a.updated.getTime());
+
+  const [jobSelected, setJobSelected] = useState<Job>(jobList[0]);
 
   const handleSelect = (idx: number) => {
-    console.log('clicked');
-    setJobSelected(jobs[idx]);
+    setJobSelected(jobList[idx]);
   }
 
   return (
@@ -20,14 +21,13 @@ function App() {
 
       <div className="JobsList">
         <div className="innerContainer">
-          { jobs
-            .sort((a, b) => b.updated.getTime() - a.updated.getTime())
+          { jobList
             .map((item: Job) =>
               (
                 <div 
                   className="JobCardContainer"
-                  key={jobs.indexOf(item)} 
-                  onClick={() => handleSelect(jobs.indexOf(item))}
+                  key={jobList.indexOf(item)} 
+                  onClick={() => handleSelect(jobList.indexOf(item))}
                 >
                   <JobCard 
                     job={item}
