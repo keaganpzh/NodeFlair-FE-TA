@@ -7,4 +7,5 @@ export default interface Job {
   location: string,
   salary: string | null,
   tags: string[],
+  image: string | undefined,
 }

@@ -2,7 +2,14 @@ import Job from '../types/job.type';
 import { FaLocationDot } from 'react-icons/fa6';
 import timeAgo from '../functions/timeAgo';
 import '../App.css';
-const jobIcon = require('../assets/images/company-logo.png');
+import {
+  ocbc,
+  tencent,
+  govtech,
+  cell5,
+  tiktok,
+  companyLogo,
+} from '../assets/images/';
 
 interface JobCardProps {
   job: Job;
@@ -13,13 +20,31 @@ function JobCard(props: JobCardProps) {
 
   const { job, selected } = props;
 
+  const renderImage = (fileName: String | undefined) => {
+    if (!fileName) return companyLogo;
+    switch (fileName) {
+      case 'ocbc':
+        return ocbc;
+      case 'tencent':
+        return tencent;
+      case 'govtech':
+        return govtech;
+      case 'cell5':
+        return cell5;
+      case 'tiktok':
+        return tiktok;
+      default:
+        return companyLogo;
+    }
+  }
+
   return (
     <div className="JobCard" id={selected ? "JobCardSelected" : ""}>
       
       <div className="infoContainer">
 
         <div className="imageWrapper">
-          <img src={jobIcon} alt="icon" />
+          <img src={renderImage(job.image)} alt="icon" />
         </div>
 
         <div className="mainWrapper">

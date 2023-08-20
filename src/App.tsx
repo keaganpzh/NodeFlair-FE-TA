@@ -20,19 +20,21 @@ function App() {
 
       <div className="JobsList">
         <div className="innerContainer">
-          {jobs.map((item: Job) =>
-            (
-              <div 
-                className="JobCardContainer"
-                key={jobs.indexOf(item)} 
-                onClick={() => handleSelect(jobs.indexOf(item))}
-              >
-                <JobCard 
-                  job={item}
-                  selected={item === jobSelected}
-                />
-              </div>
-            )
+          { jobs
+            .sort((a, b) => b.updated.getTime() - a.updated.getTime())
+            .map((item: Job) =>
+              (
+                <div 
+                  className="JobCardContainer"
+                  key={jobs.indexOf(item)} 
+                  onClick={() => handleSelect(jobs.indexOf(item))}
+                >
+                  <JobCard 
+                    job={item}
+                    selected={item === jobSelected}
+                  />
+                </div>
+              )
           )}
         </div>
       </div>
